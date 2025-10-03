@@ -1,4 +1,5 @@
 import { CreatePostCard } from "~/components/shared/CreatePostCard";
+import { HomePostList } from "~/components/shared/HomePostList";
 
 export default async function Home() {
   return (
@@ -11,6 +12,8 @@ export default async function Home() {
       </div>
 
       <CreatePostCard />
+
+      <HomePostList />
     </main>
   );
 }

@@ -23,8 +23,24 @@ model Post {
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 
+    author  User     @relation(fields: [userId], references: [id])
+    userId  String
+    answers Answer[]
+}
+
+model Answer {
+    id String @id @default(cuid())
+
+    body String
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
     author User   @relation(fields: [userId], references: [id])
     userId String
+
+    question Post   @relation(fields: [postId], references: [id])
+    postId   String
 }
 
 // Necessary for Next auth
@@ -65,6 +81,7 @@ model User {
     accounts      Account[]
     sessions      Session[]
     posts         Post[]
+    answers       Answer[]
 }
 
 model VerificationToken {
