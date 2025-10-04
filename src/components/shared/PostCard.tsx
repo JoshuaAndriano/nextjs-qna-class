@@ -11,7 +11,7 @@ type PostCardProps = {
   title: string;
   description: string;
   totalComments: number;
-  status: "ANSWERED" | "UNANSWERED";
+  isAnswered: boolean;
 };
 
 export const PostCard = (props: PostCardProps) => {
@@ -38,7 +38,7 @@ export const PostCard = (props: PostCardProps) => {
           </div>
         </div>
 
-        {props.status === "UNANSWERED" ? (
+        {!props.isAnswered ? (
           <Badge variant="secondary" className="h-fit">
             Unanswered
           </Badge>
@@ -51,7 +51,7 @@ export const PostCard = (props: PostCardProps) => {
       {/* Content */}
       <Link href={postDetailUrl} className="group">
         <div className="space-y-1">
-          <h3 className="group-hover:text-destructive text-lg font-semibold">
+          <h3 className="group-hover:text-primary text-lg font-semibold">
             {props.title}
           </h3>
           <p>{props.description}</p>

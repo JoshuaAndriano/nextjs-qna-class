@@ -19,6 +19,7 @@ model Post {
 
     title       String
     description String
+    answeredAt  DateTime?
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
