@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { CreatePostCard } from "~/components/shared/CreatePostCard";
 import { HomePostList } from "~/components/shared/HomePostList";
+import { auth } from "~/server/auth";
 
 export const metadata: Metadata = {
   title: "QnA Forum - Home",
@@ -8,6 +9,9 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
+  const session = await auth();
+  const isAuthenticated = Boolean(session);
+
   return (
     <main className="space-y-8">
       <div className="space-y-1">
@@ -19,7 +23,7 @@ export default async function Home() {
 
       <CreatePostCard />
 
-      <HomePostList />
+      {isAuthenticated && <HomePostList />}
     </main>
   );
 }

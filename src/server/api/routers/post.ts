@@ -109,6 +109,11 @@ export const postRouter = createTRPCRouter({
           },
           createdAt: true,
           answeredAt: true,
+          _count: {
+            select: {
+              answers: true,
+            },
+          },
         },
       });
 

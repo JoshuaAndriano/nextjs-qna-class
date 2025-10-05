@@ -54,6 +54,8 @@ export const CreateAnswerCard = (props: CreateAnswerCardProps) => {
       await apiUtils.answer.getAnswersByPostId.invalidate({
         postId: props.postId,
       });
+      await apiUtils.post.getPostsPaginated.invalidate();
+      await apiUtils.post.getAllPosts.invalidate();
     },
   });
 
